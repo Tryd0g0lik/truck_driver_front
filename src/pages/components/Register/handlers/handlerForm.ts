@@ -1,8 +1,10 @@
+/**
+ * src\pages\components\Register\handlers\handlerForm.ts
+ */
 import async_regex_validate_of_password from "src/pages/validators/validate_password";
 import async_regex_validate_of_username from "src/pages/validators/validate_username";
 import async_regex_validate_of_email from "src/pages/validators/validate_email";
 import warnedMeaasege from "src/service/errorMessageForFields";
-
 
 /**
  * This function:

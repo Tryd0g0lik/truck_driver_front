@@ -34,11 +34,7 @@ export const MetaListener = () => {
     const pathname =  window.location.pathname.toLowerCase().trim();
     const pageName =
       pathname.includes("register") ? "Регистрация" :
-      pathname.includes("login") ? "Авторизуйтесь" :
-      pathname.includes("profile") ? "Профиль" :
-      pathname.includes("/profile/deposit") ? "Депозит" :
-      pathname.includes("generate") ? "Генерация" :
-      pathname.includes("/register/referral") ? "Реферальная ссылка" : "Главная";
+      pathname.includes("login") ? "Авторизуйтесь" : "Главная";
 
     const state: PageMeta = {
       page: {

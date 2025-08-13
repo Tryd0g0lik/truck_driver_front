@@ -3,10 +3,10 @@
  * 
  * Here, we have the regulate of the user state/status. 
  * Generally, the user's state can has  for of states. It's:
- *   STATUS_ADMIN = "ADMIN",
- *   STATUS_USER = "USER",
- *   STATUS_SUPER_ADMIN = "SUPER_ADMIN",
- *   STATUS_ANONYMOUSUSER = "ANONYMOUSUSER" 
+ *   CATEGORY_BASE = "ADMIN",
+ *   CATEGORY_DRIVER = "USER",
+ *   CATEGORY_MANAGER = "SUPER_ADMIN",
+ *   CATEGORY_CLIENT = "ANONYMOUSUSER" 
  * In now time as a working only two states. It's "USER" and "ANONYMOUSUSER".
  */
 import {createSlice} from "@reduxjs/toolkit";
@@ -16,7 +16,7 @@ import { StatePerson,  UserStatus } from "@interfeces";
 const clearState: StatePerson = {
     "email": "",
     "password": "",
-    "status": UserStatus.STATUS_ANONYMOUSUSER,
+    "status": UserStatus.CATEGORY_CLIENT,
     "username": ""
 };
 
@@ -29,7 +29,7 @@ export let initialState: typeof clearState | object = clearState;
 
 if (lsPerson) {
     initialState  = JSON.parse(lsPerson) as object;
-    (initialState as typeof clearState).status = UserStatus.STATUS_USER;
+    (initialState as typeof clearState).status = UserStatus.CATEGORY_DRIVER;
 }; 
 
 /**

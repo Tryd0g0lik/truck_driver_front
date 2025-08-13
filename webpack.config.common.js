@@ -43,53 +43,53 @@ module.exports = {
   target: 'web',
   module: {
     rules: [
-      {
-        test: /\.(tsx|jsx|ts|js)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              configFile: path.resolve(__dirname, './babel.config.js'),
-            }
-          },
-        ],
-        exclude: [
-            path.resolve(__dirname,"**/dist"),
-            path.resolve(__dirname, "node_modules"),
-            path.resolve(__dirname, "dist"),
-        ]
+    //   {
+    //     test: /\.(tsx|jsx|ts|js)$/,
+    //     use: [
+    //       {
+    //         loader: 'babel-loader',
+    //         options: {
+    //           configFile: path.resolve(__dirname, './babel.config.js'),
+    //         }
+    //       },
+    //     ],
+    //     exclude: [
+    //         path.resolve(__dirname,"**/dist"),
+    //         path.resolve(__dirname, "node_modules"),
+    //         path.resolve(__dirname, "dist"),
+    //     ]
 
-      },
+    //   },
 
-      {
-        test: /\.s?[ac]ss$/i,
-        exclude: /\.module\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: { importLoaders: 1 }
-          },
-          'postcss-loader',
-          'sass-loader'
+    //   {
+    //     test: /\.s?[ac]ss$/i,
+    //     exclude: /\.module\.s[ac]ss$/i,
+    //     use: [
+    //       MiniCssExtractPlugin.loader,
+    //       {
+    //         loader: 'css-loader',
+    //         options: { importLoaders: 1 }
+    //       },
+    //       'postcss-loader',
+    //       'sass-loader'
 
-        ],
+    //     ],
 
-      },
+    //   },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
     ]
   },
-  plugins:{
+  plugins:[
     new Dotenv(),
     new CleanWebpackPlugin(), 
     new ESLintPlugin({
       files: path.resolve(__dirname, 'src/'),
 
     }),
-  },
+  ],
   resolve: {
     extensions: [".tsx", ".jsx", ".ts", ".js", ".svg"],
     plugins: [new TsconfigPathsPlugin(),],

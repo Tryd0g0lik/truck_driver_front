@@ -5,10 +5,6 @@
     "noImplicitAny": true,
     "module": "commonjs", //"ES6",
     "target": "ES2022",
-    // "rootDirs": [
-    //   "./src"
-    // ],
-
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "sourceMap": true,
