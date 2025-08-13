@@ -1,6 +1,5 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-const CopyPlugin = require("copy-webpack-plugin");
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -43,39 +42,7 @@ module.exports = {
   target: 'web',
   module: {
     rules: [
-    //   {
-    //     test: /\.(tsx|jsx|ts|js)$/,
-    //     use: [
-    //       {
-    //         loader: 'babel-loader',
-    //         options: {
-    //           configFile: path.resolve(__dirname, './babel.config.js'),
-    //         }
-    //       },
-    //     ],
-    //     exclude: [
-    //         path.resolve(__dirname,"**/dist"),
-    //         path.resolve(__dirname, "node_modules"),
-    //         path.resolve(__dirname, "dist"),
-    //     ]
-
-    //   },
-
-    //   {
-    //     test: /\.s?[ac]ss$/i,
-    //     exclude: /\.module\.s[ac]ss$/i,
-    //     use: [
-    //       MiniCssExtractPlugin.loader,
-    //       {
-    //         loader: 'css-loader',
-    //         options: { importLoaders: 1 }
-    //       },
-    //       'postcss-loader',
-    //       'sass-loader'
-
-    //     ],
-
-    //   },
+    
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',

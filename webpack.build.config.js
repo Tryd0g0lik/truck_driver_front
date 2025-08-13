@@ -1,36 +1,13 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const Dotenv = require('dotenv-webpack');
-// const CopyPlugin = require("copy-webpack-plugin");
-// const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const webpack = require('webpack');
-// const ESLintPlugin = require('eslint-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const TerserPlugin = require('terser-webpack-plugin');
 const merge = require("merge");
 const webpackConfig = require("./webpack.config.common.js");
 
 module.exports = merge(webpackConfig, {
   mode: 'production',
   cache: false, 
-//   watch: true,
-//   entry:
-//   {
-//     index: {
-//       import: 'src\\index.ts',
-//       dependOn: 'shared'
-//     },
-//     // https://webpack.js.org/guides/code-splitting/#entry-dependencies
-//     another: {
-//       import: './src/map/another-module.ts',
-//       dependOn: 'shared',
-//     },
-//     shared: 'lodash',
-//   },
-//   optimization: {
-//     runtimeChunk: 'single',
-//   },
   output: {
     path: path.resolve(__dirname, '../backend/static'),
     filename: 'scripts/main-[id]-[fullhash].js',
@@ -38,23 +15,6 @@ module.exports = merge(webpackConfig, {
     clean: true, 
 
   },
-//   // https://webpack.js.org/guides/code-splitting/#entry-dependencies
-//   optimization: {
-//     runtimeChunk: 'single',
-//     // minimize: false,
-//     minimizer: [
-//       new TerserPlugin({
-//         terserOptions: {
-//           format: {
-//             comments: false, // Удалите все комментарии
-//           },
-//         },
-//         extractComments: false, // Не сохранять комментарии в отдельный файл
-//       }),
-//     ],
-
-//   },
-//   target: 'web',
   module: {
     rules: [
       {
@@ -90,26 +50,10 @@ module.exports = merge(webpackConfig, {
         ],
 
       },
-//       {
-//         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-//         type: 'asset/resource',
-//       },
     ]
   },
 
   plugins: [
-    // new Dotenv(),
-    // new CleanWebpackPlugin(), 
-//    new CopyPlugin({
-//       patterns: [
-//         {
-//         from: "src/pictures/*.png",
-//         to: "pictures/[name][ext]",
-//         noErrorOnMissing: true, // Не завершать сборку, если файлов нет
-//         force: true,            // Перезаписывать существующие файлы
-//         },
-//       ],
-//     }),
     new BundleTracker({
       path: path.join(__dirname, '../bundles'),
       filename: 'webpack-stats.json'
@@ -121,28 +65,9 @@ module.exports = merge(webpackConfig, {
       columns: true
     }),
 
-    // new ESLintPlugin({
-    //   files: path.resolve(__dirname, 'src/'),
-
-    // }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css'
     }),
   ],
-
-
-//   resolve: {
-//     extensions: [".tsx", ".jsx", ".ts", ".js", ".svg"],
-//     plugins: [new TsconfigPathsPlugin(),],
-//     modules: [
-//       path.resolve(__dirname, "node_modules"),
-//     ],
-//     alias: {
-//       "@interfeces": path.resolve(__dirname, "src/interfaces.ts"),
-//       "reduxToolkit": path.resolve(__dirname, "src/reduxs"),
-//       "pictures": path.resolve(__dirname, "src/pictures"),
-//     },
-    
-//   },
 
 });
