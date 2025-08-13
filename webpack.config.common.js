@@ -1,0 +1,106 @@
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require("copy-webpack-plugin");
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+module.exports = {
+  mode: 'production',
+  cache: false,
+  entry:
+  {
+    index: {
+      import: 'src\\index.ts',
+      dependOn: 'shared'
+    },
+    // https://webpack.js.org/guides/code-splitting/#entry-dependencies
+    another: {
+      import: './src/map/another-module.ts',
+      dependOn: 'shared',
+    },
+    shared: 'lodash',
+  },
+  optimization: {
+    runtimeChunk: 'single',
+  },
+  // https://webpack.js.org/guides/code-splitting/#entry-dependencies
+  optimization: {
+    runtimeChunk: 'single',
+    // minimize: false,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false, // Удалите все комментарии
+          },
+        },
+        extractComments: false, // Не сохранять комментарии в отдельный файл
+      }),
+    ],
+
+  },
+  target: 'web',
+  module: {
+    rules: [
+      {
+        test: /\.(tsx|jsx|ts|js)$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              configFile: path.resolve(__dirname, './babel.config.js'),
+            }
+          },
+        ],
+        exclude: [
+            path.resolve(__dirname,"**/dist"),
+            path.resolve(__dirname, "node_modules"),
+            path.resolve(__dirname, "dist"),
+        ]
+
+      },
+
+      {
+        test: /\.s?[ac]ss$/i,
+        exclude: /\.module\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          },
+          'postcss-loader',
+          'sass-loader'
+
+        ],
+
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+    ]
+  },
+  plugins:{
+    new Dotenv(),
+    new CleanWebpackPlugin(), 
+    new ESLintPlugin({
+      files: path.resolve(__dirname, 'src/'),
+
+    }),
+  },
+  resolve: {
+    extensions: [".tsx", ".jsx", ".ts", ".js", ".svg"],
+    plugins: [new TsconfigPathsPlugin(),],
+    modules: [
+      path.resolve(__dirname, "node_modules"),
+    ],
+    alias: {
+      "@interfeces": path.resolve(__dirname, "src/interfaces.ts"),
+      "reduxToolkit": path.resolve(__dirname, "src/reduxs"),
+      "pictures": path.resolve(__dirname, "src/pictures"),
+    },
+    
+  },
+}
