@@ -6,9 +6,22 @@ import "./style.scss";
 import { NavbarFC } from "src/components/Navbar";
 import { FooterFC } from "src/components/Footer";
 import { OutsideFC } from "src/components/Outside";
+import { TruckStatus } from "@interfeces";
+import { RaportFC } from "src/components/Raport";
 
 const GOOGLE_MAMPS_API_KEY = process.env.GOOGLE_MAMPS_API_KEY || "";
 const url = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAMPS_API_KEY}&libraries=places&callback=initMap`;
+
+const truckStatus = {"truckStatus": [
+    TruckStatus.CURRENT,
+    TruckStatus.PICKUP,
+    TruckStatus.DROPOFF,
+    TruckStatus.OffDUTY,
+    TruckStatus.SLEEPER_BERTHER,
+    TruckStatus.DRIWING,
+    TruckStatus.OnDUTY
+]};
+
 
 declare global {
   interface Window {
@@ -69,7 +82,7 @@ const GoogleMapsComponent: React.FC = () => {
     }
 
     return () => {
-      // Cleanup
+      // CleanUp
       if (mapInstance.current) {
         google.maps.event.clearInstanceListeners(mapInstance.current);
       }
@@ -81,7 +94,9 @@ const GoogleMapsComponent: React.FC = () => {
         <Suspense fallback={<p>Load...<span className="loading loading-spinner text-success"></span></p>}>
         <NavbarFC/>
         <div className="main">
-            <OutsideFC/>
+            {/* RAPORP BY LOCATION AND DATA & TIME */}
+            <OutsideFC Component={RaportFC} props={truckStatus} />
+            {/* MAP */}
             <div ref={mapRef} style={{ width: '100%',  marginRight: '10px' }}></div>
             
         </div>
