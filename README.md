@@ -14,11 +14,11 @@ Front web-app has intagration to the ChatGPT API, authentification sнstem.
 - "`npm run prepare`": "husky".
 
 
-## FRONTEND
-- **FW**: React, Tailwind, Webpack;
+## FRONT
+- **FW**: React, Tailwind, daisyui,  Webpack;
 - **Lang**: **TypeScript**;
 - **Styles**: SCSS;
-- **Devices**: Mobil, tablet, laptop and Desctop/
+- **Devices**: Mobil, tablet, laptop and Desctop
 
 ### Redux.metapage
 Properties of meta page.
@@ -44,6 +44,7 @@ const pageSlice = createSlice({
 ```
 ```ts
 // src\interfaces.ts
+
  export interface PageMeta {
     page: {
         title: string,
@@ -105,7 +106,9 @@ const personSlice = createSlice({
 ```
 ```ts
 // src\interfaces.ts
-
+/**
+ * This is intarface for User's status roles
+ */
 export enum UserStatus {
   CATEGORY_BASE = "BASE",
   CATEGORY_DRIVER = "DRIVER",
@@ -118,6 +121,17 @@ export enum UserStatus {
 export interface StatePerson extends DataForDAPI {
     "status": string
 }
+
+/** Statice pathname of API & pages */
+export enum APIPerson {
+    API__POST_REGISTERATION = "/api/auth/person/",
+    API__POST_LOGIN = "/",
+    API__POST_LOGOUT = "/",
+    API__POST_GET_USER = "/",
+    API__POST_GET_USERS = "/",
+    API__POST_GET_USERS_BY_ID = "/"
+};
+
 ```
 Пользователь имеет два рабочих статуса. Это клиент "`USER`" страницы и аноним "`ANONYMOUSUSER`".
 
@@ -133,14 +147,14 @@ export interface StatePerson extends DataForDAPI {
 Note: Сообщение о несоответствии данных проподает при повторном нажатии на  знопку "Зарегистрироваться".
 Все проверки на валидность запускаются разом и основной поток не ожидает выполнение проверок на валидность.
 ```ts
-Promise.allSettled([
+await Promise.allSettled([
             async_regex_validate_of_username((inputUserName as HTMLInputElement).value),
             async_regex_validate_of_email((inputEmail as HTMLInputElement).value),
             async_regex_validate_of_password((inputPassword as HTMLInputElement).value),
             async_regex_validate_of_password((inputPasswordDuplicate as HTMLInputElement).value),
             (async () => ((inputPassword as HTMLInputElement).value === (inputPasswordDuplicate as HTMLInputElement).value) ? true : false)(),
             (async () => (InputCheckbox as HTMLInputElement) && (InputCheckbox as HTMLInputElement).checked ? true : false)()
-        ]).then((response)=>{})
+        ])
 ```
 Валидные данные, в качестве data-form, [отправляся на сервер](src/pages/components/Register/handlers/handlerForm.ts) в "`POST-request`".
 

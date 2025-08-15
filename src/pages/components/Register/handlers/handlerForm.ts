@@ -30,7 +30,8 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object
     
     const inputPasswordDuplicateArr = currentTarget.querySelectorAll("input[type='password']");
     const inputPassword = inputPasswordDuplicateArr[0] as HTMLInputElement;                               
-    const inputPasswordDuplicate = inputPasswordDuplicateArr[1] as HTMLInputElement;                               
+    const inputPasswordDuplicate = inputPasswordDuplicateArr[1] as HTMLInputElement; 
+    const selectHtml = currentTarget.querySelector("select.select-positions");
     /** Check - we have value/data in the attribute 'value' of filed 'input' or nnot. */
     const fields = [inputUserName, inputEmail,
         inputPassword, inputPasswordDuplicate];
@@ -93,7 +94,8 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object
     const response = {
         "username": (inputUserName as HTMLInputElement).value,
         "email": (inputEmail as HTMLInputElement).value,
-        "password": (inputPassword as HTMLInputElement).value
+        "password": (inputPassword as HTMLInputElement).value,
+        "category": (selectHtml as HTMLSelectElement).value
     };
     
     return response;

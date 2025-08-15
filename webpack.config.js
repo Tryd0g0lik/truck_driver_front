@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const webpack = require('webpack');
@@ -56,6 +57,7 @@ module.exports = merge(webpackConfig, {
   },
 
   plugins: [
+    new Dotenv(),
     new BundleTracker({
       path: path.join(__dirname, 'dist/bundles'),
       filename: 'webpack-stats.json'

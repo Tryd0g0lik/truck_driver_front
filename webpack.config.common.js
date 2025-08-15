@@ -1,5 +1,5 @@
 const path = require('path');
-const Dotenv = require('dotenv-webpack');
+
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -50,7 +50,7 @@ module.exports = {
     ]
   },
   plugins:[
-    new Dotenv(),
+    
     new CleanWebpackPlugin(), 
     new ESLintPlugin({
       files: path.resolve(__dirname, 'src/'),

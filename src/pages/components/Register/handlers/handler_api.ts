@@ -3,8 +3,6 @@
  */
 import {HandlerApiProps} from "src/interfaces";
 
-/* Sergey 123456789   work80@mial.ru */
-
 export async function handlerApiRegisterPOST(props: HandlerApiProps): Promise<{"data": string}> {
     try {
         const response = await fetch(props.api.url, {

@@ -23,8 +23,9 @@ export enum TokenKeys {
     TOKEN_CSRF = "csrftoken"
 };
 
+/** Statice pathname of API & pages */
 export enum APIPerson {
-    API__POST_REGISTERATION = "/api/auth/register/",
+    API__POST_REGISTERATION = "/api/auth/person/",
     API__POST_LOGIN = "/",
     API__POST_LOGOUT = "/",
     API__POST_GET_USER = "/",
@@ -63,13 +64,13 @@ export type HandlerApiProps = {
 
 /* NEW TYPE REDUX */
 /**
- * This is intarface for User.status
+ * This is intarface for User's status roles
  */
 export enum UserStatus {
   CATEGORY_BASE = "BASE",
   CATEGORY_DRIVER = "DRIVER",
-  CATEGORY_MANAGER = "SUPER_ADMIN",
-  CATEGORY_CLIENT = "ANONYMOUSUSER",
+  CATEGORY_MANAGER = "MANAGER",
+  CATEGORY_CLIENT = "CLIENT",
   CATEGORY_ADMIN = "ADMIN"
 };
 

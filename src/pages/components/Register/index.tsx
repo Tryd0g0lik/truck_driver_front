@@ -7,7 +7,7 @@ import { NavbarFC } from "src/components/Navbar";
 import { FooterFC } from "src/components/Footer";
 import warnedMeaasege from "src/service/errorMessageForFields";
 import handlerFormReger from "./handlers/handlerForm";
-import { PageMeta } from "@interfeces";
+import { PageMeta, UserStatus } from "@interfeces";
 import { handlerApiRegisterPOST } from "./handlers/handler_api";
 import { BasisData,  HandlerApiProps } from "@interfeces";
 import {APIPerson, APP_URL} from "src/interfaces";
@@ -77,6 +77,16 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                                 <label className="label">{/*<span>Подтвердите пароль</span> */}
                                     <input type="password" className="input" placeholder="Подтвердите пароль" />
                                 </label>
+                                <div className="select">
+                                <select defaultValue="Pick a color" className="select-positions">
+                                    <option disabled={true}>Position</option>
+                                    <option>{UserStatus.CATEGORY_DRIVER}</option>
+                                    <option>{UserStatus.CATEGORY_BASE}</option>
+                                    <option>{UserStatus.CATEGORY_MANAGER}</option>
+                                    <option>{UserStatus.CATEGORY_CLIENT}</option>
+                                    <option>{UserStatus.CATEGORY_ADMIN}</option>
+                                </select>
+                                </div>
                                 <button className="btn btn-neutral mt-4">Отправить</button>
                                 <div className="confirmation">
                                     <input type="checkbox" defaultChecked value="Ok" className="checkbox" />
