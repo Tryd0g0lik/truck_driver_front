@@ -11,6 +11,8 @@ src\components\Navbar\style.scss
     max-height: 90px;
     min-height: 90px;
     @extend %border-active;
+    border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0;
     
 
     .navbar-center__menu{

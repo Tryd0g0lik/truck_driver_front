@@ -77,3 +77,22 @@ export enum UserStatus {
 export interface StatePerson extends DataForDAPI {
     "status": string
 };
+declare interface Window {
+  google: typeof google;
+}
+
+/* USER MAPS */
+export enum TruckStatus {
+    CURRENT = "Current location",
+    PICKUP = "Pick-up location",
+    DROPOFF = "Drop-off location",
+    OffDUTY = "Off Duty",
+    SLEEPER_BERTHER = "Sleeper Berther",
+    DRIWING = "Driwing",
+    OnDUTY = "On Duty"
+}
+
+export enum TruckTimer {
+    PM = "PM",
+    AM = "AM",
+}

@@ -1,5 +1,11 @@
 ## Refiew
 Front web-app has intagration to the ChatGPT API, authentification sнstem.
+
+Project including the:
+ - google fonts.
+
+**Example of google fonts**\
+![Edu NSW ACT Cursive from google fonts](./img/google_fonts.png)
 ---
 
 ## Commands

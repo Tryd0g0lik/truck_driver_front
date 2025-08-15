@@ -11,10 +11,10 @@ return (<>
     <MenuFC />
     <div className="navbar-end">
         <div className="login btn-group">
-            <a className="btn">Войти</a>
+            <a className="btn">Login</a>
         </div>
         <div className="register btn-group">
-            <a className="btn">Создать аккаунт</a>
+            <a className="btn">Create profile</a>
         </div>
     </div>
 

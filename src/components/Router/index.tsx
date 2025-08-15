@@ -9,6 +9,7 @@ import { RegisterFC } from "src/pages/components/Register";
 import { PageMeta } from '@interfeces';
 import { RootState } from 'reduxToolkit/store';
 import { MainFC } from 'src/pages/components/Main';
+import AppGoogleMapsFC from 'src/pages/components/Maps';
 
 // 'pageMeta' - Data from redux
 const router_ = (pageMeta: PageMeta) => createBrowserRouter([
@@ -24,7 +25,10 @@ const router_ = (pageMeta: PageMeta) => createBrowserRouter([
     path: "/register",
     element: <RegisterFC {...pageMeta}/>
   },
-  
+  {
+    path: "*",
+    element: <AppGoogleMapsFC/>
+    }  
 ],
 );
 export const MetaListener = () => {

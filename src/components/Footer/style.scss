@@ -8,6 +8,10 @@ footer{
     border: 1px solid #909090;
     padding: 0 30px;
     min-height: 240px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     div.navbar-start > div > ul{
         bottom: 41px;
     }
@@ -43,8 +47,15 @@ footer{
             color: var(--basis-color-dark);
         }
     }
+    .footer__copiright__email a, 
+    div.navbar-center div.log  a  span{
+        font-family: system-ui, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+}    
+footer p, footer  a, footer * {
+    font-family: "Edu NSW ACT Cursive";
+    
 }
-
 .footer__submenu{
     grid-column: 2/3;
     grid-row: 1/2;
@@ -53,7 +64,6 @@ footer{
     }
     
 }
-
 
 .footer__submenu div.navbar-center__menu,
 footer div.navbar-center .navbar-center__menu{
@@ -108,7 +118,7 @@ section.footer__copiright div.footer_services a {
     color: var(--basis-color-dark);
 }
 .footer_services:before { 
-    content: "Ознакомьтесь со всей экосистемой:";
+    content: "Who are we:";
     position: absolute;
     top: -30px;
     width: 285px;
@@ -121,10 +131,26 @@ section.footer__copiright{
     position: relative;
 }
 
+@media screen and (max-width: 1023.9999px){
+    .footer_services{
+        padding-bottom: 0;
+    }
+    footer{
+        .log{
+            max-height: 0;
+            padding-bottom: 0;
+        }
+        .navbar-center__menu.hidden{
+            display: none;
+        }
+    }    
+}
+
 @media screen and (max-width: 1200px){
     section.footer__copiright{
             padding-top: 27px;
     }
+
     footer  div.navbar-center .navbar-center__menu {
         width:100%;
         max-width: 410px;
