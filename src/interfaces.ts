@@ -1,7 +1,7 @@
 /**
  * src\interfaces.ts
  */
-const APP_HOST = process.env.APP_HOST || "127.0.0.1";
+const APP_HOST = process.env.APP_HOST as string || "83.166.245.209";
 const APP_PORT  = process.env.APP_PORT || "8000";
 const APP_PROTOCOL = process.env.HTTP || "http";
 
@@ -77,3 +77,22 @@ export enum UserStatus {
 export interface StatePerson extends DataForDAPI {
     "status": string
 };
+declare interface Window {
+  google: typeof google;
+}
+
+/* USER MAPS */
+export enum TruckStatus {
+    CURRENT = "Current location",
+    PICKUP = "Pick-up location",
+    DROPOFF = "Drop-off location",
+    OffDUTY = "Off Duty",
+    SLEEPER_BERTHER = "Sleeper Berther",
+    DRIWING = "Driwing",
+    OnDUTY = "On Duty"
+}
+
+export enum TruckTimer {
+    PM = "PM",
+    AM = "AM",
+}

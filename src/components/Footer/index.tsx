@@ -16,9 +16,10 @@ export function FooterFC(): React.JSX.Element {
                     <div className="navbar-right">
                         <div className="navbar-center__menu hidden lg:flex">
                             <ul className="menu menu-horizontal px-1">
-                                <li><a>Политика Cookie</a></li>
-                                <li><a>Политика конфеденциальности</a></li>
-                                <li><a>Условия и положения</a></li>
+                                <li><a>Cookie politicy</a></li>
+                                <li><a>Politicy of Confidentiality</a></li>
+                                <li><a>Terms and Conditions</a></li>
+                                <li><a>FAQ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -27,7 +28,7 @@ export function FooterFC(): React.JSX.Element {
             <section className="footer__copiright">
                 <div>
                     <div className="footer__copiright__email">
-                        <a href="email:support@metalmage.kz">suppert@metalmage.kz</a>
+                        <a href="/email:support@truckdriver.com">suppert@truckdriver.com</a>
                     </div>
                     <div className="footer__copiright__contact">
                         <p>27, Avenue Road, Brentford, London, Greater London, TW8 9NS</p>
@@ -35,12 +36,11 @@ export function FooterFC(): React.JSX.Element {
                 </div>
                 <div>
                     <p className="footer_copiright__text">
-                        © 2025 Все права защещины
+                        © 2025 All rights reserved
                     </p></div>
                 <div className="footer_services">
-                    <a>MetalmageAI</a>
-                    <a>txt2voiceAI</a>
-                    <a>trnskrptrAI</a>
+                    <a>About us</a>
+                    <a>Support</a>
                 </div>
             </section>
 

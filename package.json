@@ -100,11 +100,14 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.7",
     "@reduxjs/toolkit": "^2.8.2",
+    "@types/google.maps": "^3.58.1",
     "dotenv": "^17.2.1",
     "npm": "^11.4.2",
     "package.json": "^2.0.1",
     "react": "^19.1.0",
+    "react-datepicker": "^8.4.0",
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.6.3",

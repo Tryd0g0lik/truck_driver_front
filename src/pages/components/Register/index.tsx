@@ -1,7 +1,7 @@
 /**
  * src\components\Register\index.tsx
  */
-import React from "react";
+import React, { Suspense } from "react";
 import "./style.scss";
 import { NavbarFC } from "src/components/Navbar";
 import { FooterFC } from "src/components/Footer";
@@ -16,6 +16,7 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
     const {page}  = props;
     return (
         <>
+        <Suspense fallback={<p><span className="loading loading-spinner text-success"></span></p>}>
         <section onLoad={async () => await warnedMeaasege({"include":0}) } className="profile">
             <NavbarFC/>
             <main className="form">
@@ -23,7 +24,7 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                     <div className="register_form">
                         {/* FORM FOR THE INIT OF REGISTRATION */}
                         <div className="log">
-                            <a className="btn btn-ghost text-xl">Metalmage<span>AI</span></a>
+                            <a className="btn btn-ghost text-xl">Truck Driver<span>AI</span></a>
                         </div>
                         {!page.pathName.includes("referral")? 
                             <div className="h">
@@ -87,10 +88,10 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                                     <option>{UserStatus.CATEGORY_ADMIN}</option>
                                 </select>
                                 </div>
-                                <button className="btn btn-neutral mt-4">Отправить</button>
+                                <button className="btn btn-neutral mt-4">Send</button>
                                 <div className="confirmation">
                                     <input type="checkbox" defaultChecked value="Ok" className="checkbox" />
-                                    <a className="text-center">Я принимаю условия условия и Политику конфеденциальности</a>
+                                    <a className="text-center">I agree</a>
                                 </div></>
                             ) : (
                                 <button className="btn btn-neutral mt-4">Login</button>
@@ -102,26 +103,26 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                         {/* // FORM OF REFERRAL CODE, FROM ONE FIELD THE INPUT */}
                         <div className="register_form referral refer-code">
                             <div className="log">
-                                <a className="btn btn-ghost text-xl">Metalmage<span>AI</span></a>
+                                <a href="/" className="btn btn-ghost text-xl">Truck Driver<span>AI</span></a>
                             </div>
                             <div className="h">
-                                <h1>Регистрация</h1>
+                                <h1>Registration</h1>
                             </div>
                             
                             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                                 <label className="label">
                                     <input className="input" placeholder="Введите код с email" type="email" wfd-id="id0" />
                                 </label>
-                                <p>Преоверьте почту - мы отправили вам 6-значный код Введите для подтверждения</p>
-                                <p>Не получили код? <a>Отправить повторно</a></p>
-                                <button className="btn btn-neutral mt-4">Зарегистрироваться</button>
+                                <p>Check your email - we sent letter. It contain the secret code</p>
+                                <p>No code? <a>Send more?</a></p>
+                                <button className="btn btn-neutral mt-4">Registration</button>
                             </fieldset>
                         </div>
                     </>) : null}
             </main>
             <FooterFC/>
         </section>
-
+        </Suspense>
         </>
     );
 };
