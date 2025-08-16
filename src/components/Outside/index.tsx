@@ -4,7 +4,7 @@
 import React from "react";
 import 'react-datepicker/dist/react-datepicker.css';
 interface OutsideFCProps<TProps> {
-  Component: React.ComponentType<TProps>,
+  Component: React.ComponentType<TProps>
   props?: TProps
 }
 
