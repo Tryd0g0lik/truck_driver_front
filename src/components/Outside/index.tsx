@@ -1,11 +1,11 @@
 /**
  * src\components\Outside\index.tsx
  */
-import React, { Component, useState } from "react";
+import React from "react";
 import 'react-datepicker/dist/react-datepicker.css';
 interface OutsideFCProps<TProps> {
-  Component: React.ComponentType<TProps>;
-  props?: TProps;
+  Component: React.ComponentType<TProps>,
+  props?: TProps
 }
 
 /**
@@ -16,8 +16,7 @@ interface OutsideFCProps<TProps> {
 export function  OutsideFC<TProps>({ Component, props }: OutsideFCProps<TProps>):React.JSX.Element {
     // @ts-ignore
     const comp = <Component {...props} />;
-    return (
-        <section className="side">
+    return (<section className="side">
             {comp}
         </section>
     );

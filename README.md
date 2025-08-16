@@ -1,3 +1,5 @@
+[back](https://github.com/Tryd0g0lik/truck_driver)
+
 ## Refiew
 Front web-app has intagration to the ChatGPT API, authentification sнstem.
 
@@ -6,6 +8,15 @@ Project including the:
 
 **Example of google fonts**\
 ![Edu NSW ACT Cursive from google fonts](./img/google_fonts.png)
+
+**Example of page for raport**\
+Where, the Truck driver can to send raport.\
+![Raport by location](./img/raport.png)
+
+* This is the left column of the side page. 
+*  'Your location's status' - it is a select of the status of the truck for which we the truck driver want will send raport.
+ * 'Your location' - this is the latitude & longitude of the truck driver. location of truck in that moment when the truck driver has status from 'Your location's status'.
+ * 'Pick data & time' - This is the date & time for which the truck driver has latitude & longitude and wahted to send raport
 ---
 
 ## Commands
@@ -25,6 +36,59 @@ Project including the:
 - **Lang**: **TypeScript**;
 - **Styles**: SCSS;
 - **Devices**: Mobil, tablet, laptop and Desctop
+
+## Redux
+
+### Redux.personstate
+Properties of user/person
+```ts
+// src\reduxs\features\userstate\personSlice.ts
+const personSlice = createSlice({
+    name:"personstate",
+    initialState,
+    reducers:{
+        resetPerson: () => {
+            localStorage.removeItem("person");
+        return clearState;
+        },
+        setPerson:(state, action: PayloadAction<StatePerson>) => {
+            state = action.payload;
+            return {...state};
+        },
+    },
+});
+
+```
+```ts
+// src\interfaces.ts
+/**
+ * This is intarface for User's status roles
+ */
+export enum UserStatus {
+  CATEGORY_BASE = "BASE",
+  CATEGORY_DRIVER = "DRIVER",
+  CATEGORY_MANAGER = "SUPER_ADMIN",
+  CATEGORY_CLIENT = "ANONYMOUSUSER",
+  CATEGORY_ADMIN = "ADMIN"
+  
+}
+
+export interface StatePerson extends DataForDAPI {
+    "status": string
+}
+
+/** Statice pathname of API & pages */
+export enum APIPerson {
+    API__POST_REGISTERATION = "/api/auth/person/",
+    API__POST_LOGIN = "/",
+    API__POST_LOGOUT = "/",
+    API__POST_GET_USER = "/",
+    API__POST_GET_USERS = "/",
+    API__POST_GET_USERS_BY_ID = "/"
+};
+
+```
+Пользователь имеет два рабочих статуса. Это клиент "`USER`" страницы и аноним "`ANONYMOUSUSER`".
 
 ### Redux.metapage
 Properties of meta page.
@@ -88,70 +152,17 @@ export const MetaListener = () => {
   return null;
 };
 ```
-## Redux
-
-### Redux.personstate
-Properties of user/person
-```ts
-// src\reduxs\features\userstate\personSlice.ts
-const personSlice = createSlice({
-    name:"personstate",
-    initialState,
-    reducers:{
-        resetPerson: () => {
-            localStorage.removeItem("person");
-        return clearState;
-        },
-        setPerson:(state, action: PayloadAction<StatePerson>) => {
-            state = action.payload;
-            return {...state};
-        },
-    },
-});
-
-```
-```ts
-// src\interfaces.ts
-/**
- * This is intarface for User's status roles
- */
-export enum UserStatus {
-  CATEGORY_BASE = "BASE",
-  CATEGORY_DRIVER = "DRIVER",
-  CATEGORY_MANAGER = "SUPER_ADMIN",
-  CATEGORY_CLIENT = "ANONYMOUSUSER",
-  CATEGORY_ADMIN = "ADMIN"
-  
-}
-
-export interface StatePerson extends DataForDAPI {
-    "status": string
-}
-
-/** Statice pathname of API & pages */
-export enum APIPerson {
-    API__POST_REGISTERATION = "/api/auth/person/",
-    API__POST_LOGIN = "/",
-    API__POST_LOGOUT = "/",
-    API__POST_GET_USER = "/",
-    API__POST_GET_USERS = "/",
-    API__POST_GET_USERS_BY_ID = "/"
-};
-
-```
-Пользователь имеет два рабочих статуса. Это клиент "`USER`" страницы и аноним "`ANONYMOUSUSER`".
 
 
-## Форма регистрации
-Поля имеют [валидатороты](./src/pages/validators).
-1) Вначале, все поля проверяютя "А есть ли вообще данные в поле". 
-2) После, каждое поле отдельно проверяется на соответствие шаблонам (rege-вырожениям).
+## Registration form
+files  [валидатороты](./src/pages/validators).
+1) In start (after mouse click) all fields will check on the correct data. 
 
-Каждое поле, в случае не соответствия, получаем сообщение.\
+Fields if have not corretn data, receving the warn message.\
 ![valid_fields](./img/valid_fields.png)
 
-Note: Сообщение о несоответствии данных проподает при повторном нажатии на  знопку "Зарегистрироваться".
-Все проверки на валидность запускаются разом и основной поток не ожидает выполнение проверок на валидность.
+Note: Message by no valid data removing after the mouth click in field.\
+Valid check\
 ```ts
 await Promise.allSettled([
             async_regex_validate_of_username((inputUserName as HTMLInputElement).value),
@@ -162,14 +173,10 @@ await Promise.allSettled([
             (async () => (InputCheckbox as HTMLInputElement) && (InputCheckbox as HTMLInputElement).checked ? true : false)()
         ])
 ```
-Валидные данные, в качестве data-form, [отправляся на сервер](src/pages/components/Register/handlers/handlerForm.ts) в "`POST-request`".
+The validation data [send to server](src/pages/components/Register/handlers/handlerForm.ts) send  to the server( "`POST-request`" ).
 
-в cache  добавить закешированного юзера. с ключём 'person'
+Records of user enters to the postgreSQL (main) and redis (cache).
 
-При логировании данные поступают на фронт.\
-Токены в куки.\
-person кешируется. Сделать из него байт код перевести в строку и кешировать.
+### Authorisation
 
------ 'person' -----
-Каждый запрос на сервер, в авторизованном виде, содержит токены.\
-
+![login](./img/login.png)

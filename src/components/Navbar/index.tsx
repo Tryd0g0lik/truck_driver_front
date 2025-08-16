@@ -11,10 +11,10 @@ return (<>
     <MenuFC />
     <div className="navbar-end">
         <div className="login btn-group">
-            <a className="btn">Login</a>
+            <a className="btn" href="/login/">Login</a>
         </div>
         <div className="register btn-group">
-            <a className="btn">Create profile</a>
+            <a href="/register/" className="btn">Create profile</a>
         </div>
     </div>
 

@@ -22,7 +22,6 @@ const truckStatus = {"truckStatus": [
     TruckStatus.OnDUTY
 ]};
 
-
 declare global {
   interface Window {
     google: typeof google

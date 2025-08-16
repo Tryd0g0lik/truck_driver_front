@@ -24,7 +24,7 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                     <div className="register_form">
                         {/* FORM FOR THE INIT OF REGISTRATION */}
                         <div className="log">
-                            <a className="btn btn-ghost text-xl">Metalmage<span>AI</span></a>
+                            <a className="btn btn-ghost text-xl">Truck Driver<span>AI</span></a>
                         </div>
                         {!page.pathName.includes("referral")? 
                             <div className="h">
@@ -103,7 +103,7 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                         {/* // FORM OF REFERRAL CODE, FROM ONE FIELD THE INPUT */}
                         <div className="register_form referral refer-code">
                             <div className="log">
-                                <a className="btn btn-ghost text-xl">Truck Driver<span>AI</span></a>
+                                <a href="/" className="btn btn-ghost text-xl">Truck Driver<span>AI</span></a>
                             </div>
                             <div className="h">
                                 <h1>Registration</h1>

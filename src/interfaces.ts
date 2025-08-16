@@ -1,7 +1,7 @@
 /**
  * src\interfaces.ts
  */
-const APP_HOST = process.env.APP_HOST || "127.0.0.1";
+const APP_HOST = process.env.APP_HOST as string || "83.166.245.209";
 const APP_PORT  = process.env.APP_PORT || "8000";
 const APP_PROTOCOL = process.env.HTTP || "http";
 

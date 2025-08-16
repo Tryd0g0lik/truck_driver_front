@@ -26,7 +26,7 @@ const router_ = (pageMeta: PageMeta) => createBrowserRouter([
     element: <RegisterFC {...pageMeta}/>
   },
   {
-    path: "*",
+    path: "/raport",
     element: <AppGoogleMapsFC/>
     }  
 ],
@@ -37,8 +37,8 @@ export const MetaListener = () => {
   useEffect(() => {
     const pathname =  window.location.pathname.toLowerCase().trim();
     const pageName =
-      pathname.includes("register") ? "Регистрация" :
-      pathname.includes("login") ? "Авторизуйтесь" : "Главная";
+      pathname.includes("register") ? "Registration" :
+      pathname.includes("login") ? "Authorisation" : "Main page";
 
     const state: PageMeta = {
       page: {

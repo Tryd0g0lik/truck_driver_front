@@ -6,8 +6,7 @@ import React, { useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
-type TypeTruckStatus = {"truckStatus": Array<TruckStatus>}
+type TypeTruckStatus = {"truckStatus": Array<TruckStatus>};
 /**
  * This is the left column of the side page. 
  *  - 'Your location's status' - it is a select of the status of the truck for which we the truck driver want will send raport.
@@ -20,7 +19,7 @@ export function RaportFC(props: TypeTruckStatus): React.JSX.Element {
         const [isOpen, setIsOpen] = useState(false);
         const {truckStatus} = props;
     return (<>
-    <section className="side">
+    <section className="raport">
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
             <header className="h">
                     <h2>Raport</h2>
@@ -37,9 +36,7 @@ export function RaportFC(props: TypeTruckStatus): React.JSX.Element {
                             <option key={index}>{element as string}</option>
                             )
                         ) ) : null
-                    }
-                    
-                    
+                    }                    
                 </select>    
             </div>
             <header className="h">

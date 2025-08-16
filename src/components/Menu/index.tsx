@@ -9,7 +9,7 @@ export function MenuFC(): React.JSX.Element {
             
             <div className="navbar-center">
                 <div className="log">
-                    <a className="btn btn-ghost text-xl">Truck Driver<span>AI</span></a>
+                    <a href="/" className="btn btn-ghost text-xl">Truck Driver<span>AI</span></a>
                 </div>
                 <div className="navbar-start">
                 <div className="dropdown">
@@ -19,7 +19,7 @@ export function MenuFC(): React.JSX.Element {
                 <ul tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li><a>Offers</a></li>
-                        <li><a>All Generator</a></li>                    
+                        <li><a href="/raport/">Raport</a></li>                    
                         <li><a>Tariffs</a></li>
                 </ul>
             </div>
@@ -27,7 +27,7 @@ export function MenuFC(): React.JSX.Element {
                 <div className="navbar-center__menu hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><a>Offers</a></li>
-                        <li><a>All Generator</a></li>                    
+                        <li><a href="/raport/">Raport</a></li>                      
                         <li><a>Tariffs</a></li>
 
                     </ul>

@@ -13,16 +13,16 @@ type Props = {
  * @warnedMeaasege - function for warning the user about the incorrect data in the field of form.
  * @param {HTMLElement} htmlContainer - HTMLElement/container html where you need inser the new html-box for \
  * to publish a message of the warn-message.
- * @param {string} message - message of the warn-message (text of warn-message). Default value is "В поле данные не корректы.".
- * @param {string}title - title for html-container where is text of the warn-message. Default value is "Проверьте поле!".
+ * @param {string} message - message of the warn-message (text of warn-message). Default value is "Fill out the field with correct data..".
+ * @param {string}title - title for html-container where is text of the warn-message. Default value is "Field is emtry!".
  * @param {number}include - number for include the html-box of warn-message. Default value is number 0 - serch/find end remove html-box from war-message.
  * @param {boolean} top - boolean for position of html-box of warn-message. Default value is false it means - bottom of html-container.
  */
 async function warnedMeaasege(props: Props): Promise<boolean> {
     const{
         htmlContainer = undefined,
-        message ="В поле данные не корректы.",
-        title = "Проверьте поле!",
+        message ="Fill out the field with correct data.",
+        title = "Field is emtry!",
         include=0,
         top=false
     } = props;
@@ -33,7 +33,6 @@ async function warnedMeaasege(props: Props): Promise<boolean> {
         messageError.className = "active warned-message";
         spanHtml.textContent = message;
         messageError.innerHTML = spanHtml.outerHTML;
-        // const h = window.getComputedStyle(htmlContainer as HTMLDivElement).height.split("px")[0];
         const pb = (window.getComputedStyle(htmlContainer as HTMLElement).paddingBottom).split("px")[0];
         
         if (!top){

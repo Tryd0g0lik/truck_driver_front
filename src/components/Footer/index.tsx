@@ -28,7 +28,7 @@ export function FooterFC(): React.JSX.Element {
             <section className="footer__copiright">
                 <div>
                     <div className="footer__copiright__email">
-                        <a href="email:support@metalmage.kz">suppert@truckdriver.com</a>
+                        <a href="/email:support@truckdriver.com">suppert@truckdriver.com</a>
                     </div>
                     <div className="footer__copiright__contact">
                         <p>27, Avenue Road, Brentford, London, Greater London, TW8 9NS</p>

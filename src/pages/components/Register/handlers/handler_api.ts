@@ -19,7 +19,7 @@ export async function handlerApiRegisterPOST(props: HandlerApiProps): Promise<{"
             }
             
         }
-        return {"data": "handlerApiRegister: Error => JSON data is not corrected!"};
+        return {"data": "handlerApiRegister: Error => Somothing what wrong!"};
     }catch (error: Error|unknown) {
         if (error instanceof Error) {
             console.error('Error:', error.message);
