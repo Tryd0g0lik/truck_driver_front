@@ -1,7 +1,7 @@
 /**
  * src\interfaces.ts
  */
-const APP_HOST = process.env.APP_HOST as string || "83.166.245.209";
+const APP_HOST = process.env.APP_HOST || "83.166.245.209";
 const APP_PORT  = process.env.APP_PORT || "8000";
 const APP_PROTOCOL = process.env.HTTP || "http";
 
@@ -26,7 +26,7 @@ export enum TokenKeys {
 /** Statice pathname of API & pages */
 export enum APIPerson {
     API__POST_REGISTERATION = "/api/auth/person/",
-    API__POST_LOGIN = "/",
+    API__POST_LOGIN = "/api/auth/person/0/active/",
     API__POST_LOGOUT = "/",
     API__POST_GET_USER = "/",
     API__POST_GET_USERS = "/",
@@ -90,9 +90,34 @@ export enum TruckStatus {
     SLEEPER_BERTHER = "Sleeper Berther",
     DRIWING = "Driwing",
     OnDUTY = "On Duty"
-}
+};
 
 export enum TruckTimer {
     PM = "PM",
     AM = "AM",
-}
+};
+
+export type TokenAccessType = {
+    "token_access": string,
+    "live_time": number,
+} ;
+export type TokenTokenrefreshType = {
+    "token_refresh": string,
+    "live_time": number,
+};
+type UserType = {
+    "id": number;
+    "last_login": string;
+    "is_superuser": boolean;
+    "username": string;
+    "first_name": string;
+};
+export interface ActiveUser {
+    "data": [
+        {
+            "access":TokenAccessType,
+            "refresh":TokenTokenrefreshType,
+            "user": UserType
+        }
+    ]
+};

@@ -1,9 +1,9 @@
 /**
  * src\pages\components\Register\handlers\handler_api.ts
  */
-import {HandlerApiProps} from "src/interfaces";
+import {ActiveUser, HandlerApiProps} from "src/interfaces";
 
-export async function handlerApiRegisterPOST(props: HandlerApiProps): Promise<{"data": string}> {
+export async function handlerApiRegisterPOST(props: HandlerApiProps): Promise<{"data": string | ActiveUser}> {
     try {
         const response = await fetch(props.api.url, {
             method: props.api.method,

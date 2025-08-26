@@ -6,11 +6,8 @@ import "./style.scss";
 import { NavbarFC } from "src/components/Navbar";
 import { FooterFC } from "src/components/Footer";
 import warnedMeaasege from "src/service/errorMessageForFields";
-import handlerFormReger from "./handlers/handlerForm";
 import { PageMeta, UserStatus } from "@interfeces";
-import { handlerApiRegisterPOST } from "./handlers/handler_api";
-import { BasisData,  HandlerApiProps } from "@interfeces";
-import {APIPerson, APP_URL} from "src/interfaces";
+import { mainHandler } from "./handlers/handlerMain";
 
 export function RegisterFC(props: PageMeta): React.JSX.Element {
     const {page}  = props;
@@ -31,37 +28,7 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                                 <h1>{page.title}</h1>
                             </div> : null
                         }
-                        <fieldset onMouseDown={async (event: React.MouseEvent) => {
-                            /** WARNING MESSAGE CHECK & REMOVE */
-                            await warnedMeaasege({include: 0});
-                            /** NUMBER 1 & 2 - in  the 'handlerFormReger' - CHECKER & VALIDATER */
-                            const response = await handlerFormReger(event);
-                            if (!response){
-                                return false;
-                            }
-                            /** 3. IF WE GET DATA FROM THE FORM FILEDS WE WILL BE SEND IT TO THE API */
-                            const dotaForm = new FormData();
-                            for (const [k, v] of Object.entries(response as BasisData) ){
-                                dotaForm.append(k, v as string);
-                            }
-                            const dataForAPI:HandlerApiProps = {
-                                "api": {
-                                    "url": APP_URL + `${APIPerson.API__POST_REGISTERATION}`,
-                                    "method": "POST",
-                                    "body": dotaForm,
-                                }
-                            };
-                            
-                            try {
-                                /** If all is OK we would be data '{"data": 'OK"}' in the response of the API */
-                                const responseApi = await handlerApiRegisterPOST(dataForAPI);
-                                console.log(responseApi);
-                                return true;
-                            } catch (error) {
-                                console.log("Error => ", error);   
-                                return false;
-                            };
-                            }} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                        <fieldset onMouseDown={mainHandler} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                             <label className="label"><span>Имя пользователя</span>
                                 <input type="text" className="input" placeholder="Имя пользователя" />
                             </label>

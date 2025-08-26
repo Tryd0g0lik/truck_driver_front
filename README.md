@@ -20,6 +20,15 @@ Where, the Truck driver can to send raport.\
  * 'Pick data & time' - This is the date & time for which the truck driver has latitude & longitude and wahted to send raport
 ---
 
+### Nav-bar
+When user's cookie has that proporties how "`person`", we can see the next nav-bar:\
+![cookie_true_person](./img/cookie_true_navbar.png)
+
+**And not have**\
+![cookie_true_person](./img/cookie_false_navbar.png)
+
+
+
 ## Commands
 
 - "`npm install package.json`" install dependencies;
@@ -181,3 +190,12 @@ Records of user enters to the postgreSQL (main) and redis (cache).
 ### Authorisation
 
 ![login](./img/login.png)
+
+If you enter the correct of data (in field of form ) ,  a response from server return else data, it's:
+- "`token_access`";
+- "`token_refresh`"
+- and "`{id: 100, last_login: '2025-08-26T10:31:15.627678+07:00', is_superuser: false, username: 'Tutu', first_name: '', …}`".
+
+![cookie of person](./img/person_cookie.png)
+
+This all data be records in cookie. Data/properties of user we can use, but  we can't use tokens.
