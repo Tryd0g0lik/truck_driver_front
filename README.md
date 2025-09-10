@@ -1,4 +1,7 @@
-[back](https://github.com/Tryd0g0lik/truck_driver), more information.
+
+
+- [Django Backend Person](https://github.com/Tryd0g0lik/truck_driver)
+- [FastAPI Backend Map](https://github.com/Tryd0g0lik/truck_driver_app_microservice)
 
 ## Refiew
 
