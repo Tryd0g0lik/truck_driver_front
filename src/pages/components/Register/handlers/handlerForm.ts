@@ -35,8 +35,8 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object
     /** Check - we have value/data in the attribute 'value' of filed 'input' or nnot. */
     const fields = [inputUserName, inputEmail,
         inputPassword, inputPasswordDuplicate];
-    const fieldsFilterArr = fields.filter((item) => (item as HTMLInputElement).value.length == 0);
-    if (fieldsFilterArr.length > 0){
+    const fieldsFilterArr = fields.filter((item) => (item as HTMLInputElement).value != null);
+    if (fieldsFilterArr.length === 0){
         /** WARNED MESSAGE WILL BE PUBLICATION */
         const labelNode = fieldsFilterArr[0]?.parentElement;
         const htmlContainer=(labelNode as HTMLElement);
