@@ -1,5 +1,5 @@
 /**
- * src\reduxs\store.ts
+ * \src\reduxs\store.ts
  */
 import { configureStore } from "@reduxjs/toolkit";
 import personSlice from "reduxToolkit/features/userstate/personSlice";

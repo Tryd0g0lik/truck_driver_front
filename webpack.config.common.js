@@ -67,6 +67,7 @@ module.exports = {
       "@interfeces": path.resolve(__dirname, "src/interfaces.ts"),
       "reduxToolkit": path.resolve(__dirname, "src/reduxs"),
       "pictures": path.resolve(__dirname, "src/pictures"),
+      "@pages": path.resolve(__dirname, "src/pages"),
     },
     
   },

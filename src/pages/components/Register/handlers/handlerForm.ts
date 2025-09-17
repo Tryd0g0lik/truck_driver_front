@@ -55,8 +55,8 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object
             fields.length > 2 ? async_regex_validate_of_email((inputEmail as HTMLInputElement).value) : null,
             async_regex_validate_of_password((inputPassword as HTMLInputElement).value),
             fields.length > 2 ? async_regex_validate_of_password((inputPasswordDuplicate as HTMLInputElement).value) : null,
-            fields.length > 2 ? (async () => ((inputPassword as HTMLInputElement).value === (inputPasswordDuplicate as HTMLInputElement).value) ? true : false)(): null,
-            fields.length > 2 ? (async () => (InputCheckbox as HTMLInputElement) && (InputCheckbox as HTMLInputElement).checked ? true : false)(): null
+            fields.length > 2 ? (((inputPassword as HTMLInputElement).value === (inputPasswordDuplicate as HTMLInputElement).value) ? true : false): null, // 2 строки изменил
+            fields.length > 2 ? ((InputCheckbox as HTMLInputElement) && (InputCheckbox as HTMLInputElement).checked ? true : false): null
         ]);
     
     /** Check the data/ If we will find any error, we will be publication massage of warn and stoped the prosses */

@@ -1,3 +1,7 @@
+/**
+ * \src\service\cookiesService.ts
+ */
+
 export function getCookie(name: string): string {
   let cookieValue = '';
   if ((document.cookie !== undefined) && (document.cookie !== '')) {
@@ -12,5 +16,4 @@ export function getCookie(name: string): string {
     }
   }
   return cookieValue;
-
 }

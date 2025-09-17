@@ -9,15 +9,9 @@ export async function handlerApiRegisterPOST(props: HandlerApiProps): Promise<{"
             method: props.api.method,
             body: props.api.body,
         });
-        if (response.ok) {
-            try {
-                const data = await response.json() as {data: string};
-                return data;
-            } catch (error) {
-                console.error('Error parsing JSON:', error);
-                return {"data": "Not OK"};
-            }
-            
+        if (response.ok) {        
+            const data = await response.json() as {data: string};
+            return data;
         }
         return {"data": "handlerApiRegister: Error => Somothing what wrong!"};
     }catch (error: Error|unknown) {

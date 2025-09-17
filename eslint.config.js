@@ -23,6 +23,7 @@ module.exports = {
       browser: true, // Глобальные переменные браузера
       // node: true, // Глобальные переменные Node.js
       // browser: true,
+      jest: true,
       commonjs: true,
       es2022: true,
     },
@@ -31,7 +32,7 @@ module.exports = {
       project: path.resolve(__dirname, "tsconfig.json"), // Убедитесь, что путь верный
       tsconfigRootDir: __dirname,
       ecmaVersion: 2018, //'latest',
-      tsconfigRootDir: "/",
+    //   tsconfigRootDir: "/",
       ecmaFeatures: {
         ts: true,
         js: true,
@@ -135,7 +136,7 @@ module.exports = {
 
     "@typescript-eslint/consistent-indexed-object-style": ["error", "index-signature"],
 
-    '@typescript-eslint/await-thenable': 'error',
+    // '@typescript-eslint/await-thenable': 'error',
 
     '@typescript-eslint/no-unsafe-assignment': 'error',
     '@typescript-eslint/no-unsafe-call': 'error',
@@ -161,18 +162,11 @@ module.exports = {
   '@typescript-eslint/prefer-nullish-coalescing': 'off', //["error", { ignoreTernaryTests: true }]
 },
   ignores: [
-    "postcss.config.js",
-    "/src/index.ts",
-    "babel.config.js",
     "src/index.ts",
     "*.js",
-    "**/interfaces.ts",
-    "**/dist/**",       // Игнорировать всю папку dist
-    "**/*.js",         // Игнорировать все JS-файлы
-    "webpack.config.*", // Игнорировать конфиги Webpack
-    "postcss.config.*",
-    "babel.config.*",
-    "*.config.js",      // Все конфиги
-    "dotenv__.ts" 
+    "**/__tests__/**/*"
   ],
+  rules: {
+    semi: "error",
+    },
 };

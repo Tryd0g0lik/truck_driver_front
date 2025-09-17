@@ -8,9 +8,6 @@ import {APIPerson, APP_URL} from "src/interfaces";
 import warnedMeaasege from "src/service/errorMessageForFields";
 import { ActiveUser } from "@interfeces";
 
-
-
-
 // TASK 1/3. Record the access-tokens of user in cookies
 const task_by_record_token_to_cookies = (responseApi:  ActiveUser) => {new Promise((resolve) => {
         const dataArr = responseApi["data"][0];
@@ -78,7 +75,10 @@ export const mainHandler = async (event: React.MouseEvent): Promise<boolean> => 
             window.location.pathname.startsWith("/register/") ? window.location.pathname =  "/login/" : window.location.pathname =  "/";
             resolve(true);
         });
-        Promise.all([ task_by_record_token_to_cookies(responseApi as unknown as  ActiveUser), task_by_cleaning_inpyts,  task_by_relocation ]);
+        Promise.all([
+            task_by_record_token_to_cookies(responseApi as unknown as  ActiveUser),
+            task_by_cleaning_inpyts,  task_by_relocation 
+        ]);
         return true;
     } catch (error) {
         console.log("Error => ", error);   
