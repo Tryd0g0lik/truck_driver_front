@@ -33,17 +33,18 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object
     const inputPasswordDuplicate = inputPasswordDuplicateArr[1] as HTMLInputElement || ""; 
     const selectHtml =  currentTarget.querySelector("select.select-positions") || "";
     /** Check - we have value/data in the attribute 'value' of filed 'input' or nnot. */
+
     const fields = window.location.pathname.startsWith("/register/")? [inputUserName, inputEmail,
         inputPassword, inputPasswordDuplicate] : [inputUserName, inputPassword];
-    const fieldsFilterArr = fields.filter((item) => (item as HTMLInputElement).value.length == 0);
-    if (fieldsFilterArr.length > 0){
-        /** WARNED MESSAGE WILL BE PUBLICATION */
-        const labelNode = (fieldsFilterArr[0] as HTMLElement).parentElement;
-        const htmlContainer=(labelNode as HTMLElement);
-        include = 1;
-        await warnedMeaasege({htmlContainer, include});
-        return false;
-    }
+    // const fieldsFilterArr = fields.filter((item) => (item as HTMLInputElement).value != null);
+    // if (fieldsFilterArr.length === 0){
+    //     /** WARNED MESSAGE WILL BE PUBLICATION */
+    //     const labelNode = (fieldsFilterArr[0] as HTMLElement).parentElement;
+    //     const htmlContainer=(labelNode as HTMLElement);
+    //     include = 1;
+    //     await warnedMeaasege({htmlContainer, include});
+    //     return false;
+    // }
     /** Simply? get the HTMLInputElement for type of checkbox  */
     const InputCheckbox = currentTarget.querySelector(".confirmation input[type='checkbox']");
     const htmlMinContainer = document.querySelector(".register_form") as HTMLElement;
