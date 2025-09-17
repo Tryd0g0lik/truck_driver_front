@@ -54,6 +54,7 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .nox/
+coverage
 .coverage
 .coverage.*
 .cache
@@ -185,7 +186,7 @@ Python
 # Installer logs
 
 # Unit test / coverage reports
-./coverage
+
 # Translations
 
 

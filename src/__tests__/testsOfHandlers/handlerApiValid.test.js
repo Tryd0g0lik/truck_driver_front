@@ -1,9 +1,11 @@
-import { handlerApiRegisterPOST } from "@pages/components/Register/handlers/handler_api";
-
+/**
+ * src\__tests__\testsOfHandlers\handlerApiValid.test.js
+ */
+const { handlerApiRegisterPOST } = require("../../pages/components/Register/handlers/handler_api");
 
 test('handlerApiRegisterPOST test valid', async () => {
     const formData = new FormData();
-    formData.append('username', 'test');
+    formData.append('username', `username_${Math.floor((Math.random() + 10))}`);
     formData.append('password', 'Eo121GOeWU6zaZgL');
     formData.append("email", "mytest@test.com");
     const result = await handlerApiRegisterPOST({
@@ -16,6 +18,4 @@ test('handlerApiRegisterPOST test valid', async () => {
     await Object.is(result, Promise.resolve({}));
     await expect(Object.values(result)[0]).toMatch('OK');
     await expect(Object.values(result)[0]).toBe('OK');
-    
-    // await expect(result).toEqual(Promise.resolve({"data": "OK"}));
 });

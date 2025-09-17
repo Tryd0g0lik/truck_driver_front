@@ -150,7 +150,7 @@ const config: Config = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "src/__tests__/**/*.?(js)|(ts)",
+    "**/__tests__/**/*.(js)|(ts)",
     // "**/__tests__/**/*.?([mc])[jt]s?(x)",
     // "**/?(*.)+(spec|test).?([mc])[jt]s?(x)"
   ],
@@ -180,11 +180,11 @@ const config: Config = {
   // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: [
-    "node_modules/*",
+//   transformIgnorePatterns: [
+//     "node_modules/*",
     // "\\\\node_modules\\\\",
   //   "\\.pnp\\.[^\\\\]+$"
-  ],
+//   ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

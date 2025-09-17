@@ -130,13 +130,10 @@ module.exports = {
 
 
     'indent': 'off',
-    // '@stylistic/ts/indent': ['error', 2],
     '@typescript-eslint/no-explicit-any': ['error', { fixToUnknown: false, ignoreRestArgs: true }],
     '@typescript-eslint/no-var-requires': 'error',
 
     "@typescript-eslint/consistent-indexed-object-style": ["error", "index-signature"],
-
-    // '@typescript-eslint/await-thenable': 'error',
 
     '@typescript-eslint/no-unsafe-assignment': 'error',
     '@typescript-eslint/no-unsafe-call': 'error',

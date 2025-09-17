@@ -13,11 +13,11 @@ export async function handlerApiRegisterPOST(props: HandlerApiProps): Promise<{"
             const data = await response.json() as {data: string};
             return data;
         }
-        return {"data": "handlerApiRegister: Error => Somothing what wrong!"};
+        return {"data": "Not OK"};
     }catch (error: Error|unknown) {
         if (error instanceof Error) {
             console.error('Error:', error.message);
         };
-        return {"data": "Not OK"};
+        return {"data": "handlerApiRegister: Error => Somothing what wrong!"};
     }
 };
