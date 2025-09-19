@@ -1,13 +1,12 @@
 import handlerFormReger from "../../pages/components/Register/handlers/handlerForm";
 import React from "react";
 import '@testing-library/jest-dom';
-const username = "username";
 import {JSDOM} from "jsdom";
-
+const username = "username";
 describe('Testing window.location.pathname', () => {
     let documents: Document;
     beforeEach(() => {
-        const {document} =( new JSDOM(`
+        const {document, window} =( new JSDOM(`
             <!DOCTYPE html>
                 <html lang="ru" data-ds-theme="dark-theme">
 
@@ -57,7 +56,8 @@ describe('Testing window.location.pathname', () => {
                 contentType: 'text/html', // значения по умолчанию
                 includeNodeLocations: true,
             })).window;
-            documents = document
+            documents = document;
+            window.location.pathname = "/register/";
     });
     afterEach(() => {
         documents.close();

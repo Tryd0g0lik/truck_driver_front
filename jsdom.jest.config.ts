@@ -148,7 +148,7 @@ const config: Config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "node", 
+  testEnvironment: "jsdom", 
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -158,7 +158,7 @@ const config: Config = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    '<rootDir>/src/__tests__/testsOfHandlers/*.{js,jsx,ts,tsx}',
+    '<rootDir>/src/__tests__/testHandlerForm/*.{js,jsx,ts,tsx}',
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped

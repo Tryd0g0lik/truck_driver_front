@@ -5,7 +5,7 @@ const { handlerApiRegisterPOST } = require("../../pages/components/Register/hand
 
 test('handlerApiRegisterPOST test valid', async () => {
     const formData = new FormData();
-    formData.append('username', `username_${Math.floor((Math.random() + 10))}`);
+    formData.append('username', `username_${Math.random()}`);
     formData.append('password', 'Eo121GOeWU6zaZgL');
     formData.append("email", "mytest@test.com");
     const result = await handlerApiRegisterPOST({

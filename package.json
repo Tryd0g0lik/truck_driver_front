@@ -15,7 +15,8 @@
     "server": "webpack server --mode=development --config ./webpack.config.js",
     "husk": "npm prepare",
     "prepare": "husky",
-    "test": "jest"
+    "test:jsdom": "jest --config jsdom.jest.config.ts",
+    "test": "jest --config jest.config.ts && npm run test:jsdom"
   },
   "engines": {
     "npm": ">=10.0"

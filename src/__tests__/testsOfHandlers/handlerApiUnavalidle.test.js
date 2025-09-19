@@ -6,7 +6,7 @@ const { handlerApiRegisterPOST } = require("../../pages/components/Register/hand
 
 describe('Test the handler the POST API request and returning the not valid response', () =>{
     test.each([
-        [`testUnavalible_${Math.floor((Math.random() + 10))}f`, 'Not OK'],
+        [`testUnavalible_${Math.random()}f`, 'Not OK'],
     ])('handlerApiRegisterPOST test unavalible', async (username, expected) => {
 
         const formData = new FormData();
