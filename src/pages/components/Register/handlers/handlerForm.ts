@@ -1,10 +1,10 @@
 /**
  * src\pages\components\Register\handlers\handlerForm.ts
  */
-import async_regex_validate_of_password from "src/pages/validators/validate_password";
-import async_regex_validate_of_username from "src/pages/validators/validate_username";
-import async_regex_validate_of_email from "src/pages/validators/validate_email";
-import warnedMeaasege from "src/service/errorMessageForFields";
+import async_regex_validate_of_password from "../../../validators/validate_password";
+import async_regex_validate_of_username from "../../../validators/validate_username";
+import async_regex_validate_of_email from "../../../validators/validate_email";
+import warnedMeaasege from "../../../../service/errorMessageForFields";
 
 /**
  * This function:
@@ -15,9 +15,7 @@ import warnedMeaasege from "src/service/errorMessageForFields";
  * @returns 
  */
 const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object> => {
-    if (!(
-        (event.target as HTMLElement).tagName.toLowerCase() === "button")
-    ){
+    if (!(event.target as HTMLElement).tagName || (event.target as HTMLElement).tagName.toLowerCase() !== "button"){
         return false;
     }
     event.preventDefault();
@@ -33,18 +31,8 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object
     const inputPasswordDuplicate = inputPasswordDuplicateArr[1] as HTMLInputElement || ""; 
     const selectHtml =  currentTarget.querySelector("select.select-positions") || "";
     /** Check - we have value/data in the attribute 'value' of filed 'input' or nnot. */
-
     const fields = window.location.pathname.startsWith("/register/")? [inputUserName, inputEmail,
         inputPassword, inputPasswordDuplicate] : [inputUserName, inputPassword];
-    // const fieldsFilterArr = fields.filter((item) => (item as HTMLInputElement).value != null);
-    // if (fieldsFilterArr.length === 0){
-    //     /** WARNED MESSAGE WILL BE PUBLICATION */
-    //     const labelNode = (fieldsFilterArr[0] as HTMLElement).parentElement;
-    //     const htmlContainer=(labelNode as HTMLElement);
-    //     include = 1;
-    //     await warnedMeaasege({htmlContainer, include});
-    //     return false;
-    // }
     /** Simply? get the HTMLInputElement for type of checkbox  */
     const InputCheckbox = currentTarget.querySelector(".confirmation input[type='checkbox']");
     const htmlMinContainer = document.querySelector(".register_form") as HTMLElement;
@@ -59,8 +47,7 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean|object
             fields.length > 2 ? ((InputCheckbox as HTMLInputElement) && (InputCheckbox as HTMLInputElement).checked ? true : false): null
         ]);
     
-    /** Check the data/ If we will find any error, we will be publication massage of warn and stoped the prosses */
-    
+    /** Check the data/ If we will find any error, we will be publication massage of warn and stoped the prosses */    
     if (result[0].status == "fulfilled" && !result[0].value){
         /** Check the username */
         const htmlContainer = (inputUserName as HTMLInputElement).parentElement as HTMLElement; 
