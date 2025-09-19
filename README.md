@@ -1,4 +1,7 @@
-[back](https://github.com/Tryd0g0lik/truck_driver), more information.
+
+
+- [Django Backend Person](https://github.com/Tryd0g0lik/truck_driver)
+- [FastAPI Backend Map](https://github.com/Tryd0g0lik/truck_driver_app_microservice)
 
 ## Refiew
 
@@ -200,6 +203,7 @@ If you enter the correct of data (in field of form ) ,  a response from server r
 ![cookie of person](./img/person_cookie.png)
 
 This all data be records in cookie. Data/properties of user we can use, but  we can't use tokens.
+<<<<<<< HEAD
 
 # jest test
 Three of config files were added for testing in root.
@@ -208,3 +212,5 @@ Three of config files were added for testing in root.
 - "`node.jest.config.ts`".
 
 ![jest testing](./img/jest.png)
+=======
+>>>>>>> 5f336f5979aa509ad813a37b3fd0c38a5cb9fca7
