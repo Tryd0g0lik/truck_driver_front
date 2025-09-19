@@ -16,7 +16,7 @@
     "husk": "npm prepare",
     "prepare": "husky",
     "test:jsdom": "jest --config jsdom.jest.config.ts",
-    "test": "jest --config jest.config.ts && npm run test:jsdom"
+    "test": "jest --config node.jest.config.ts && npm run test:jsdom"
   },
   "engines": {
     "npm": ">=10.0"

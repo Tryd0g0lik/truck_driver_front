@@ -39,6 +39,7 @@ When user's cookie has that proporties how "`person`", we can see the next nav-b
 - "`npm run cssstyle`" - FW Tailwind start by the beginning to work. It's listener chacnging all css and Tailwind's components from "`daisyui.com`";
 - "`npm run husk`" Start before "`prepare`". Before start need create the "`pre-commit`" the by path "`*./.husky`'. In file "`pre-commit`" insert "`npm run lint`";
 - "`npm run prepare`": "husky".
+- "`npm test`": will be running jest-test of files.
 
 
 ## FRONT
@@ -199,3 +200,11 @@ If you enter the correct of data (in field of form ) ,  a response from server r
 ![cookie of person](./img/person_cookie.png)
 
 This all data be records in cookie. Data/properties of user we can use, but  we can't use tokens.
+
+# jest test
+Three of config files were added for testing in root.
+- "`jest.config.ts`";
+- "`jsdom.jest.config.ts`";
+- "`node.jest.config.ts`".
+
+![jest testing](./img/jest.png)
