@@ -1,25 +1,25 @@
 /**
  * src\reduxs\features\pagestate\pageState.ts
- * 
+ *
  * From the PageRouter we can get page.title, page.description, page.keywords, page.pathName and other data.
  * Example. We can get variable the page.pathName and change the page title/handing in components.
  */
-import {createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import type {PageMeta} from "@interfeces";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { PageMeta } from '@interfeces';
 
 /** Basis proporties of page  */
-const clearPageState: PageMeta ={
+const clearPageState: PageMeta = {
     page: {
-        title: "",
-        description: "",
+        title: '',
+        description: '',
         keywords: [],
-        pathName: "",
-    }
+        pathName: '',
+    },
 };
 
 const pageSlice = createSlice({
-    name: "metapage",
+    name: 'metapage',
     initialState: clearPageState,
     reducers: {
         resetPageMeta: () => clearPageState,
@@ -31,10 +31,10 @@ const pageSlice = createSlice({
              * ....
              */
             state = action.payload;
-            return {...state};
+            return { ...state };
         },
     },
 });
 
-export const {setCurrentMeta, resetPageMeta} = pageSlice.actions;
+export const { setCurrentMeta, resetPageMeta } = pageSlice.actions;
 export default pageSlice.reducer;

@@ -1,9 +1,9 @@
 /**
  * \src\reduxs\store.ts
  */
-import { configureStore } from "@reduxjs/toolkit";
-import personSlice from "reduxToolkit/features/userstate/personSlice";
-import pageSlice from "reduxToolkit/features/pagestate/pageSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import personSlice from 'reduxToolkit/features/userstate/personSlice';
+import pageSlice from 'reduxToolkit/features/pagestate/pageSlice';
 
 /**
  * personSlice - This is the state of the  user/person.
@@ -11,9 +11,9 @@ import pageSlice from "reduxToolkit/features/pagestate/pageSlice";
  */
 export const store = configureStore({
     reducer: {
-        personstate:  personSlice,
+        personstate: personSlice,
         metapage: pageSlice,
-  },
+    },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself;

@@ -3,23 +3,22 @@ src\components\Navbar\style.scss
 */
 %border-active {
     border: 1px solid #909090;
-};
+}
 
 /* NAVBAR */
-.navbar{
+.navbar {
     justify-content: space-between;
     max-height: 90px;
     min-height: 90px;
     @extend %border-active;
     border-bottom-left-radius: 0;
     border-bottom-left-radius: 0;
-    
 
-    .navbar-center__menu{
-        >ul{
+    .navbar-center__menu {
+        > ul {
             display: flex;
             justify-content: flex-start;
-            
+
             max-width: 1135px;
             width: 100%;
         }
@@ -37,7 +36,7 @@ src\components\Navbar\style.scss
 
     /* navbar-end*/
     .login.btn-group,
-    .login a.btn  {
+    .login a.btn {
         border: 0;
         background: none;
     }
@@ -47,7 +46,6 @@ src\components\Navbar\style.scss
         font-size: 0.8em;
         box-shadow: none;
     }
-    
 
     .register {
         background: none;
@@ -60,7 +58,4 @@ src\components\Navbar\style.scss
         font-weight: 500;
         font-size: 0.9em;
     }
-
-
 }
-

@@ -1,14 +1,14 @@
-import type {Config } from "jest";
+import type { Config } from 'jest';
 // The test environment that will be used for testing
-  import basisConfig from "./jest.config";
-  const consfig: Config = {
-    testEnvironment: "node", 
-      // The glob patterns Jest uses to detect test files
+import basisConfig from './jest.config';
+const consfig: Config = {
+    testEnvironment: 'node',
+    // The glob patterns Jest uses to detect test files
     testMatch: [
         '<rootDir>/src/__tests__/testsOfHandlers/*.{js,jsx,ts,tsx}',
+        `<rootDir>/src/__tests__/testValidators/*.{js,jsx,ts,tsx}`,
     ],
-    ...basisConfig
+    ...basisConfig,
+};
 
-  }
-
-  export default consfig;
+export default consfig;

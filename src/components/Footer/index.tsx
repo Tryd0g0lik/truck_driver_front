@@ -1,50 +1,55 @@
 /**
  * src\components\Footer\index.tsx
  */
-import React from "react";
-import "./style.scss";
-import { MenuFC } from "../Menu";
+import React from 'react';
+import './style.scss';
+import { MenuFC } from '../Menu';
 
 export function FooterFC(): React.JSX.Element {
-    return(
+    return (
         <>
-        <footer>
-            {/* <div> */}
+            <footer>
+                {/* <div> */}
                 <MenuFC />
                 <div className="footer__submenu">
-                    
                     <div className="navbar-right">
                         <div className="navbar-center__menu hidden lg:flex">
                             <ul className="menu menu-horizontal px-1">
-                                <li><a>Cookie politicy</a></li>
-                                <li><a>Politicy of Confidentiality</a></li>
-                                <li><a>Terms and Conditions</a></li>
-                                <li><a>FAQ</a></li>
+                                <li>
+                                    <a>Cookie politicy</a>
+                                </li>
+                                <li>
+                                    <a>Politicy of Confidentiality</a>
+                                </li>
+                                <li>
+                                    <a>Terms and Conditions</a>
+                                </li>
+                                <li>
+                                    <a>FAQ</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            {/* </div> */}
-            <section className="footer__copiright">
-                <div>
-                    <div className="footer__copiright__email">
-                        <a href="/email:support@truckdriver.com">suppert@truckdriver.com</a>
+                {/* </div> */}
+                <section className="footer__copiright">
+                    <div>
+                        <div className="footer__copiright__email">
+                            <a href="/email:support@truckdriver.com">suppert@truckdriver.com</a>
+                        </div>
+                        <div className="footer__copiright__contact">
+                            <p>27, Avenue Road, Brentford, London, Greater London, TW8 9NS</p>
+                        </div>
                     </div>
-                    <div className="footer__copiright__contact">
-                        <p>27, Avenue Road, Brentford, London, Greater London, TW8 9NS</p>
+                    <div>
+                        <p className="footer_copiright__text">© 2025 All rights reserved</p>
                     </div>
-                </div>
-                <div>
-                    <p className="footer_copiright__text">
-                        © 2025 All rights reserved
-                    </p></div>
-                <div className="footer_services">
-                    <a>About us</a>
-                    <a>Support</a>
-                </div>
-            </section>
-
-        </footer>
+                    <div className="footer_services">
+                        <a>About us</a>
+                        <a>Support</a>
+                    </div>
+                </section>
+            </footer>
         </>
     );
-};
+}

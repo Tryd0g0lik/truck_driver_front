@@ -1,12 +1,13 @@
-import handlerFormReger from "../../pages/components/Register/handlers/handlerForm";
-import React from "react";
+import handlerFormReger from '../../pages/components/Register/handlers/handlerForm';
+import React from 'react';
 import '@testing-library/jest-dom';
-import {JSDOM} from "jsdom";
-const username = "username";
+import { JSDOM } from 'jsdom';
+const username = 'username';
 describe('Testing window.location.pathname', () => {
     let documents: Document;
     beforeEach(() => {
-        const {document, window} =( new JSDOM(`
+        const { document, window } = new JSDOM(
+            `
             <!DOCTYPE html>
                 <html lang="ru" data-ds-theme="dark-theme">
 
@@ -50,21 +51,23 @@ describe('Testing window.location.pathname', () => {
                     </div>
                 </div>
             </html>
-            `, {
+            `,
+            {
                 url: 'https://127.0.0.1:8000/register/', // по умолчанию about:blank
                 referrer: 'https://127.0.0.1:8000/registe/',
                 contentType: 'text/html', // значения по умолчанию
                 includeNodeLocations: true,
-            })).window;
-            documents = document;
-            window.location.pathname = "/register/";
+            },
+        ).window;
+        documents = document;
+        window.location.pathname = '/register/';
     });
     afterEach(() => {
         documents.close();
     });
     test('Test of event to the handler', async () => {
-        const rootHtml = documents.getElementById("root");
-        const buttonHtml = rootHtml?.getElementsByClassName("button")[0] as HTMLButtonElement;
+        const rootHtml = documents.getElementById('root');
+        const buttonHtml = rootHtml?.getElementsByClassName('button')[0] as HTMLButtonElement;
         // check - What we don't have the null or undefined
         expect(buttonHtml).not.toBeFalsy();
         // Check - Location element in the body of the document, or not.
@@ -75,25 +78,27 @@ describe('Testing window.location.pathname', () => {
             stoppropagation: jest.fn(),
             target: {
                 ...buttonHtml,
-                tagName: "BUTTON",
-                parentElement:{
-                    parentElement: rootHtml
+                tagName: 'BUTTON',
+                parentElement: {
+                    parentElement: rootHtml,
                 },
-                
             },
-            
         } as unknown as React.MouseEvent<Element, MouseEvent>;
         // Start the handler
         const response = await handlerFormReger(clickEvent);
         // Check response from the handler
         expect(response).not.toBeFalsy();
-        expect(typeof response).toBe("object");
-        expect((response as  {
-            username: string,
-            email: string,
-            password: string,
-            category: string
-        })["username"]).toBe("username");
+        expect(typeof response).toBe('object');
+        expect(
+            (
+                response as {
+                    username: string;
+                    email: string;
+                    password: string;
+                    category: string;
+                }
+            )['username'],
+        ).toBe('username');
         console.log(response);
     });
 });
