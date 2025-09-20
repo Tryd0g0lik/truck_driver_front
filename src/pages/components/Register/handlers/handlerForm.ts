@@ -40,12 +40,12 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean | obje
     //
     /** 2. CHECKING - DATA FROM VALUES OF FIELD ('INPUT'). iT EQUAL FOR THE REGEX TEMPLETE OR NOT */
     const result = await Promise.allSettled([
-        async_regex_validate_of_username((inputUserName as HTMLInputElement).value),
-        fields.length > 2 ? async_regex_validate_of_email((inputEmail as HTMLInputElement).value) : null,
-        async_regex_validate_of_password((inputPassword as HTMLInputElement).value),
-        fields.length > 2 ? async_regex_validate_of_password((inputPasswordDuplicate as HTMLInputElement).value) : null,
+        async_regex_validate_of_username((inputUserName as HTMLInputElement).value.trim()),
+        fields.length > 2 ? async_regex_validate_of_email((inputEmail as HTMLInputElement).value.trim()) : null,
+        async_regex_validate_of_password((inputPassword as HTMLInputElement).value.trim()),
+        fields.length > 2 ? async_regex_validate_of_password((inputPasswordDuplicate as HTMLInputElement).value.trim()) : null,
         fields.length > 2
-            ? (inputPassword as HTMLInputElement).value === (inputPasswordDuplicate as HTMLInputElement).value
+            ? (inputPassword as HTMLInputElement).value.trim() === (inputPasswordDuplicate as HTMLInputElement).value.trim()
                 ? true
                 : false
             : null, // 2 строки изменил
@@ -92,10 +92,10 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean | obje
     }
     /** If we will not find any error, we will be return data from the form fields  */
     const response = {
-        username: (inputUserName as HTMLInputElement).value,
-        email: fields.length > 2 ? (inputEmail as HTMLInputElement).value : '',
-        password: (inputPassword as HTMLInputElement).value,
-        category: fields.length > 2 ? (selectHtml as HTMLSelectElement).value : '',
+        username: (inputUserName as HTMLInputElement).value.trim(),
+        email: fields.length > 2 ? (inputEmail as HTMLInputElement).value.trim() : '',
+        password: (inputPassword as HTMLInputElement).value.trim(),
+        category: fields.length > 2 ? (selectHtml as HTMLSelectElement).value.trim() : '',
     };
 
     return response;

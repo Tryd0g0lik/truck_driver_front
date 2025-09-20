@@ -1,3 +1,6 @@
+/**
+ * src\__tests__\testValidators\regex_validate_of_username.test.ts
+ */
 import usernameValidator from '../../pages/validators/validate_username';
 
 describe('Test for validators of form fields VAlid', () => {

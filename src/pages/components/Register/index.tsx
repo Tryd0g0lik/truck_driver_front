@@ -8,8 +8,10 @@ import { FooterFC } from 'src/components/Footer';
 import warnedMeaasege from 'src/service/errorMessageForFields';
 import { PageMeta, UserStatus } from '@interfeces';
 import { mainHandler } from './handlers/handlerMain';
+import {useNavigate} from "react-router";
 
 export function RegisterFC(props: PageMeta): React.JSX.Element {
+    const navigate = useNavigate();
     const { page } = props;
     return (
         <>
@@ -36,7 +38,7 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                                 </div>
                             ) : null}
                             <fieldset
-                                onMouseDown={mainHandler}
+                                onMouseDown={mainHandler(navigate)}
                                 className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
                             >
                                 <label className="label">

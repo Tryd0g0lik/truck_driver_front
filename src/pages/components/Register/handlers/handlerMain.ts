@@ -8,6 +8,7 @@ import { APIPerson, APP_URL } from 'src/interfaces';
 import warnedMeaasege from 'src/service/errorMessageForFields';
 import { ActiveUser } from '@interfeces';
 
+
 // TASK 1/3. Record the access-tokens of user in cookies
 const task_by_record_token_to_cookies = (responseApi: ActiveUser) => {
     new Promise((resolve) => {
@@ -40,7 +41,8 @@ const task_by_cleaning_inpyts = new Promise((resolve) => {
  * @param event MouseEvent is mousdown event.
  * @returns Promise<boolean>
  */
-export const mainHandler = async (event: React.MouseEvent): Promise<boolean> => {
+export const mainHandler = (usenavigator: any ) => async (event: React.MouseEvent): Promise<boolean> => {
+
     /** WARNING MESSAGE CHECK & REMOVE */
     await warnedMeaasege({ include: 0 });
     /** NUMBER 1 & 2 - in  the 'handlerFormReger' - CHECKER & VALIDATER */
@@ -67,8 +69,11 @@ export const mainHandler = async (event: React.MouseEvent): Promise<boolean> => 
     try {
         const responseApi = await handlerApiRegisterPOST(dataForAPI);
         if (
-            !(typeof responseApi['data']).toLowerCase().includes('object') ||
-            ((typeof responseApi['data']).toLowerCase().includes('object') &&
+            (
+                ((typeof responseApi["data"]).includes("string")) &&  (responseApi["data"] as string).startsWith('Not')
+            )
+            || (
+                (typeof responseApi['data']).toLowerCase().includes('object') &&
                 Object.keys((responseApi as unknown as ActiveUser)['data'][0]).length < 2)
         ) {
             return false;
@@ -76,8 +81,8 @@ export const mainHandler = async (event: React.MouseEvent): Promise<boolean> => 
         // TASK 3/3. Relocate to the main page.
         const task_by_relocation = new Promise((resolve) => {
             window.location.pathname.startsWith('/register/')
-                ? (window.location.pathname = '/login/')
-                : (window.location.pathname = '/');
+                ? usenavigator('/login/')
+                : usenavigator('/');
             resolve(true);
         });
         Promise.all([

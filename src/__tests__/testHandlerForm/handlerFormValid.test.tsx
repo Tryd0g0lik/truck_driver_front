@@ -1,9 +1,13 @@
+/**
+ * src\__tests__\testHandlerForm\handlerFormValid.test.tsx
+ */
 import handlerFormReger from '../../pages/components/Register/handlers/handlerForm';
 import React from 'react';
 import '@testing-library/jest-dom';
 import { JSDOM } from 'jsdom';
 const username = 'username';
-describe('Testing window.location.pathname', () => {
+
+describe('Testing the handler "handlerFormReger"', () => {
     let documents: Document;
     beforeEach(() => {
         const { document, window } = new JSDOM(

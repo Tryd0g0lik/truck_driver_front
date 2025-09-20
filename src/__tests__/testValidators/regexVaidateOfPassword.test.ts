@@ -1,3 +1,6 @@
+/**
+ * src\__tests__\testValidators\regexVaidateOfPassword.test.ts
+ */
 import usernameValidator from '../../pages/validators/validate_password';
 
 describe('regex_validate_of_password', () => {
