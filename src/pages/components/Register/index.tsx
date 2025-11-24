@@ -9,6 +9,7 @@ import warnedMeaasege from 'src/service/errorMessageForFields';
 import { PageMeta, UserStatus } from '@interfeces';
 import { mainHandler } from './handlers/handlerMain';
 import {useNavigate} from "react-router";
+import handlerFormInclude from './handlers/handlerFormInClude';
 
 export function RegisterFC(props: PageMeta): React.JSX.Element {
     const navigate = useNavigate();
@@ -22,6 +23,11 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                     </p>
                 }
             >
+
+
+П Е Р Е П И С А Т Ь логика на втором движке
+
+
                 <section onLoad={async () => await warnedMeaasege({ include: 0 })} className="profile">
                     <NavbarFC />
                     <main className="form">
@@ -38,7 +44,7 @@ export function RegisterFC(props: PageMeta): React.JSX.Element {
                                 </div>
                             ) : null}
                             <fieldset
-                                onMouseDown={mainHandler(navigate)}
+                                onMouseDown={async(e: React.MouseEvent) => await mainHandler(e)}
                                 className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
                             >
                                 <label className="label">

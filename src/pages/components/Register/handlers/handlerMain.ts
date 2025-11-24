@@ -7,6 +7,7 @@ import { BasisData, HandlerApiProps } from '@interfeces';
 import { APIPerson, APP_URL } from 'src/interfaces';
 import warnedMeaasege from 'src/service/errorMessageForFields';
 import { ActiveUser } from '@interfeces';
+import handlerFormInclude from './handlerFormInClude';
 
 
 // TASK 1/3. Record the access-tokens of user in cookies
@@ -41,14 +42,15 @@ const task_by_cleaning_inpyts = new Promise((resolve) => {
  * @param event MouseEvent is mousdown event.
  * @returns Promise<boolean>
  */
-export const mainHandler = (usenavigator: any ) => async (event: React.MouseEvent): Promise<boolean> => {
+export const mainHandler = async (event: React.MouseEvent): Promise<boolean> => {
 
     /** WARNING MESSAGE CHECK & REMOVE */
     await warnedMeaasege({ include: 0 });
     /** NUMBER 1 & 2 - in  the 'handlerFormReger' - CHECKER & VALIDATER */
-    const response = await handlerFormReger(event);
+    let response = await handlerFormReger(event);
     if (!response) {
-        return false;
+        response = await handlerFormInclude(event);
+        if (!response) return false;
     }
     /** 3. IF WE GET DATA FROM THE FORM FILEDS WE WILL BE SEND IT TO THE API */
     const dotaForm = new FormData();
@@ -81,11 +83,11 @@ export const mainHandler = (usenavigator: any ) => async (event: React.MouseEven
         // TASK 3/3. Relocate to the main page.
         const task_by_relocation = new Promise((resolve) => {
             window.location.pathname.startsWith('/register/')
-                ? usenavigator('/login/')
-                : usenavigator('/');
+                ? window.location.pathname ='/login/'
+                : window.location.pathname ='/';
             resolve(true);
         });
-        Promise.all([
+        Promise.allSettled([
             task_by_record_token_to_cookies(responseApi as unknown as ActiveUser),
             task_by_cleaning_inpyts,
             task_by_relocation,

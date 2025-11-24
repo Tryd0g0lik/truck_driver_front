@@ -6,6 +6,7 @@ import async_regex_validate_of_username from '../../../validators/validate_usern
 import async_regex_validate_of_email from '../../../validators/validate_email';
 import warnedMeaasege from '../../../../service/errorMessageForFields';
 
+
 /**
  * This function:
  *  - check the data from the form fields;
@@ -21,19 +22,21 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean | obje
     event.preventDefault();
     let include = 0;
 
-    /** 1. GET FIELDS FROM THE FORM */
-    const currentTarget = (event.target as HTMLElement).parentElement?.parentElement as HTMLElement;
-    const inputUserName = currentTarget.querySelector("input[placeholder='Имя пользователя']");
-    const inputEmail = currentTarget.querySelector("input[type='email']") || '';
 
-    const inputPasswordDuplicateArr = currentTarget.querySelectorAll("input[type='password']");
-    const inputPassword = inputPasswordDuplicateArr[0] as HTMLInputElement;
-    const inputPasswordDuplicate = (inputPasswordDuplicateArr[1] as HTMLInputElement) || '';
-    const selectHtml = currentTarget.querySelector('select.select-positions') || '';
+    /** 1. GET FIELDS FROM THE FORM */
+    // const currentTarget = (event.target as HTMLElement).parentElement?.parentElement as HTMLElement;
+    const currentTarget = (event.target as HTMLElement).closest('fieldset') as HTMLElement;
+    const inputUserName = currentTarget.querySelector("input[placeholder='Имя пользователя']") as HTMLInputElement;
+    const inputEmail = currentTarget.querySelector("input[type='email']") as HTMLInputElement;
+
+    const inputPasswordArray = currentTarget.querySelectorAll("input[type='password']") ;
+    if (inputPasswordArray.length < 2) {
+        return false;
+    }
+    const selectHtml = currentTarget.querySelector('select.select-positions');
     /** Check - we have value/data in the attribute 'value' of filed 'input' or nnot. */
-    const fields = window.location.pathname.startsWith('/register/')
-        ? [inputUserName, inputEmail, inputPassword, inputPasswordDuplicate]
-        : [inputUserName, inputPassword];
+    let fields = [inputUserName, inputEmail,  ...inputPasswordArray, selectHtml].filter(Boolean);
+
     /** Simply? get the HTMLInputElement for type of checkbox  */
     const InputCheckbox = currentTarget.querySelector(".confirmation input[type='checkbox']");
     const htmlMinContainer = document.querySelector('.register_form') as HTMLElement;
@@ -41,19 +44,16 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean | obje
     /** 2. CHECKING - DATA FROM VALUES OF FIELD ('INPUT'). iT EQUAL FOR THE REGEX TEMPLETE OR NOT */
     const result = await Promise.allSettled([
         async_regex_validate_of_username((inputUserName as HTMLInputElement).value.trim()),
-        fields.length > 2 ? async_regex_validate_of_email((inputEmail as HTMLInputElement).value.trim()) : null,
-        async_regex_validate_of_password((inputPassword as HTMLInputElement).value.trim()),
-        fields.length > 2 ? async_regex_validate_of_password((inputPasswordDuplicate as HTMLInputElement).value.trim()) : null,
-        fields.length > 2
-            ? (inputPassword as HTMLInputElement).value.trim() === (inputPasswordDuplicate as HTMLInputElement).value.trim()
-                ? true
-                : false
-            : null, // 2 строки изменил
-        fields.length > 2
-            ? (InputCheckbox as HTMLInputElement) && (InputCheckbox as HTMLInputElement).checked
-                ? true
-                : false
-            : null,
+        async_regex_validate_of_email((inputEmail as HTMLInputElement).value.trim()),
+        async_regex_validate_of_password((inputPasswordArray[0] as HTMLInputElement).value.trim()),
+        async_regex_validate_of_password((inputPasswordArray[1] as HTMLInputElement).value.trim()),
+        (inputPasswordArray[0] as HTMLInputElement).value.trim() === (inputPasswordArray[1] as HTMLInputElement).value.trim()
+        ? true
+        : false,
+        (InputCheckbox as HTMLInputElement) && (InputCheckbox as HTMLInputElement).checked
+        ? true
+        : false
+
     ]);
 
     /** Check the data/ If we will find any error, we will be publication massage of warn and stoped the prosses */
@@ -63,17 +63,16 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean | obje
         include = 1;
         await warnedMeaasege({ htmlContainer, include });
         return false;
-    } else if (fields.length > 2 && result[1].status == 'fulfilled' && !result[1].value) {
+    } else if (result[1].status == 'fulfilled' && !result[1].value) {
         /** Check the email */
         const htmlContainer = (inputEmail as HTMLInputElement).parentElement as HTMLElement;
         include = 1;
         await warnedMeaasege({ htmlContainer, include });
         return false;
     } else if (
-        (fields.length > 2 &&
-            ((result[2].status == 'fulfilled' && !result[2].value) ||
-                (fields.length > 2 && result[3].status == 'fulfilled' && !result[3].value))) ||
-        (fields.length == 2 && result[2].status == 'fulfilled' && !result[2].value)
+        ((result[2].status == 'fulfilled' && !result[2].value) ||
+                (result[3].status == 'fulfilled' && !result[3].value)) ||
+        (result[2].status == 'fulfilled' && !result[2].value)
     ) {
         /** Check the password and duplicate of password */
         htmlMinContainer.style.position = 'relative';
@@ -82,7 +81,7 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean | obje
         const top = true;
         await warnedMeaasege({ htmlContainer: htmlMinContainer, message, top, include });
         return false;
-    } else if (fields.length > 2 && result[5].status == 'fulfilled' && !result[5].value) {
+    } else if (result[5].status == 'fulfilled' && !result[5].value) {
         htmlMinContainer.style.position = 'relative';
         const top = true;
         const message = 'Подтвердите согласие на обработку персональных данных';
@@ -93,9 +92,9 @@ const handlerFormReger = async (event: React.MouseEvent): Promise<boolean | obje
     /** If we will not find any error, we will be return data from the form fields  */
     const response = {
         username: (inputUserName as HTMLInputElement).value.trim(),
-        email: fields.length > 2 ? (inputEmail as HTMLInputElement).value.trim() : '',
-        password: (inputPassword as HTMLInputElement).value.trim(),
-        category: fields.length > 2 ? (selectHtml as HTMLSelectElement).value.trim() : '',
+        email: (inputEmail as HTMLInputElement).value.trim(),
+        password: (inputPasswordArray[0] as HTMLInputElement).value.trim(),
+        category: (selectHtml as HTMLSelectElement).value.trim(),
     };
 
     return response;

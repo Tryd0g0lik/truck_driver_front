@@ -166,7 +166,7 @@ module.exports = {
 
         '@typescript-eslint/prefer-nullish-coalescing': 'off', //["error", { ignoreTernaryTests: true }]
     },
-    ignores: ['src/index.ts', '*.js', '**/__tests__/**/*'],
+    ignores: ['src/index.ts', '*.js', '**/__tests__'],
     rules: {
         semi: 'error',
     },
